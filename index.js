@@ -1,14 +1,14 @@
-//var WebSocketServer = require('ws').Server;
-//var wss = new WebSocketServer({port: 8000});
+var WebSocketServer = require('ws').Server;
+var wss = new WebSocketServer({port: 8000});
 
-//wss.on('connection', function(ws)
-//{
-//	ws.on('message', function(message)
-//	{
-//		console.log('received %s', message);
-//	});
-//	ws.send('something');
-//});
+wss.on('connection', function(ws)
+{
+	ws.on('message', function(message)
+	{
+		console.log('received %s', message);
+	});
+	ws.send('something');
+});
 
 var http = require("http");
 var server = http.createServer(function(request, response) {
