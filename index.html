@@ -1,0 +1,31 @@
+<html>
+    <script>
+        $(function() 
+        {
+            window.WebSocket = window.WebSocket || window.MozWebSocket;
+            
+            if(!window.WebSocket)
+            {
+                content.html("Your web browser does not support Web Socket!");    
+                return;
+            }
+
+            var connection = new WebSocket('ws://http://192.241.216.182:1337');
+
+            connection.onmessage = function(message)
+            {
+                try
+                {
+                    var json = JSON.parse(message.data);
+                }
+                catch(error)
+                {
+                    console.log('Error parsing JSON data from server');    
+                    return;
+                }
+
+                alert(json.data);
+            }
+        }
+    </script>
+</html>
